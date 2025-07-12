@@ -1,18 +1,9 @@
 package main
 
-import (
-	"github.com/gin-gonic/gin"
-	"newarea/handler"
-)
+import "newarea/cmd"
 
 func main() {
-	router := gin.Default()
-
-	healthHandler := handler.NewHealthHandler()
-
-	router.GET("/health", healthHandler.Health)
-
-	if err := router.Run(":8080"); err != nil {
+	if err := cmd.Execute(); err != nil {
 		panic(err)
 	}
 }
